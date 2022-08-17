@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card__content">
+    <h4 class="card__title">STAR WARS: {{ film.properties.title | uppercase }}</h4>
+    <p class="card__text">{{ film.properties.opening_crawl }}</p>
+  </div>
+  <div class="card__poster">
+    <a [routerLink]="[film.id, 'details']">
+      <img class="poster" [src]="image" alt="film poster">
+    </a>
+  </div>
+</div>

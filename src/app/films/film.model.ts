@@ -14,3 +14,22 @@ export interface IFilm {
     edited: string[];
     url: string;
 }
+
+export class Film {
+  id!: number;
+  properties!: IFilm;
+
+  constructor(data: IFilm) {
+    this.setProperties(data);
+  }
+
+  private setProperties(value: IFilm) {
+    const arr = value.url.split('/');
+    this.id = +arr[arr.length - 2];
+
+    this.properties = {
+      ...value,
+      episode_id: +value.episode_id
+    }
+  }
+}

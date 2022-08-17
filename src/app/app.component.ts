@@ -1,27 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { PeopleApiService } from '@core/services/people-api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app';
-
-  constructor(
-    private peopleApiService: PeopleApiService
-  ) {}
-
-  ngOnInit(): void {
-    this.peopleApiService.getPeople(1)
-      .subscribe(
-        value => console.log(value.count)
-      );
-
-    this.peopleApiService.getCharacter(1)
-      .subscribe(
-        value => console.log(value.name)
-      )
-  }
 }

@@ -1,0 +1,10 @@
+<section class="films">
+  <div class="films__container">
+    <ul class="films-list" *ngIf="films$ | async as films">
+      <li class="films-list__item" *ngFor="let film of films">
+        <app-film-card [film]="film"></app-film-card>
+      </li>
+    </ul>
+  </div>
+</section>
+

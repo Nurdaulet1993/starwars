@@ -1,0 +1,21 @@
+@use "sass:math";
+@import "layout/container";
+
+.films {
+  color: #ffffff;
+  padding: math.div(50, 16) * 1rem;
+  //background-image: linear-gradient(180deg, #000, #151515);
+  //background-color: #151515;
+
+  &__container {
+    @include container;
+  }
+}
+
+.films-list {
+  list-style: none;
+
+  &__item {
+    margin-bottom: math.div(30, 16) * 1rem;
+  }
+}
