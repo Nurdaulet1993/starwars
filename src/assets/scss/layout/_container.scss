@@ -1,0 +1,7 @@
+@use "sass:math";
+
+@mixin container {
+  margin: 0 auto;
+  max-width: math.div(1320, 16) * 1rem;
+  padding: 0 math.div(15, 16) * 1rem;
+}

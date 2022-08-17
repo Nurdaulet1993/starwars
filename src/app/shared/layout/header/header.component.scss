@@ -1,0 +1,20 @@
+@use "sass:math";
+@import "layout/container";
+
+.header {
+  padding: math.div(15, 16) * 1rem;
+  background-color: #000000;
+  color: #ffffff;
+
+  &__container {
+    @include container;
+  }
+}
+
+.logo {
+
+  &__img {
+    width: math.div(100, 16) * 1rem;
+    height: auto;
+  }
+}
