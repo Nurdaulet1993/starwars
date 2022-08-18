@@ -5,7 +5,7 @@
   </div>
   <div class="card__poster">
     <a [routerLink]="[film.id, 'details']">
-      <img class="poster" [src]="image" alt="film poster">
+      <img class="poster" [src]="film.properties.image" alt="film poster">
     </a>
   </div>
 </div>

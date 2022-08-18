@@ -13,9 +13,4 @@ export class FilmCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {}
-
-  get image(): string {
-    return `assets/img/films/${this.film.id}.png`;
-  }
-
 }

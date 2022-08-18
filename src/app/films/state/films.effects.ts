@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { State } from '@app/films/state/index';
 import { FilmsActions, FilmsApiActions  } from './actions';
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
-import { Film, IFilm } from '@app/films/film.model';
 
 @Injectable()
 export class FilmsEffects {
@@ -14,12 +13,23 @@ export class FilmsEffects {
     ofType(FilmsActions.getFilms),
     mergeMap(() => this.filmsApiService.getFilms()
         .pipe(
-          map((films: IFilm[]) => films.map(film => new Film(film))),
           map((films) => FilmsApiActions.getFilmsSuccess({ films })),
           catchError(() => EMPTY)
         )
     )
   ))
+
+  getFilm$ = createEffect(() => this.actions$.pipe(
+    ofType(FilmsActions.getFilm),
+    mergeMap(({ id }) => this.filmsApiService.getFilm(id)
+      .pipe(
+        map((film) => FilmsApiActions.getFilmSuccess({ film })),
+        catchError(() => EMPTY)
+      )
+    )
+  ))
+
+
 
 
   constructor(

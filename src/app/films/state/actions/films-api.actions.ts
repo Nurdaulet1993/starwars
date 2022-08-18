@@ -21,3 +21,8 @@ export const getFilmsFail = createAction(
   FilmsApiActionsType.GET_FILMS_FAIL,
   props<{ error: string }>()
 )
+
+export const getFilmSuccess = createAction(
+  FilmsApiActionsType.GET_FILM_SUCCESS,
+  props<{ film: Film }>()
+)

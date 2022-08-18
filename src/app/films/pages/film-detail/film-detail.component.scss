@@ -1,0 +1,36 @@
+@use "sass:math";
+@import "layout/container";
+
+.film {
+  color: #ffffff;
+  padding: math.div(50, 16) * 1rem;
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    grid-gap: math.div(20, 16) * 1rem;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.film-props {
+  list-style: none;
+  background-color: rgba(#fff, 0.1);
+  padding: math.div(15, 16) * 1rem;
+  border-radius: math.div(5, 16) * 1rem;
+
+
+  &__item {
+    margin-bottom: math.div(20, 16) * 1rem;
+    line-height: 1.7;
+  }
+}

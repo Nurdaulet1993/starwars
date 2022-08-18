@@ -15,9 +15,13 @@ export interface IFilm {
     url: string;
 }
 
+export interface IFilmProps extends IFilm{
+  image: string;
+}
+
 export class Film {
   id!: number;
-  properties!: IFilm;
+  properties!: IFilmProps;
 
   constructor(data: IFilm) {
     this.setProperties(data);
@@ -29,7 +33,8 @@ export class Film {
 
     this.properties = {
       ...value,
-      episode_id: +value.episode_id
+      episode_id: +value.episode_id,
+      image: `assets/img/films/${this.id}.png`
     }
   }
 }

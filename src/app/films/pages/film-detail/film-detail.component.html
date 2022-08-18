@@ -1,1 +1,18 @@
-<p>film-detail works!</p>
+<section class="film">
+  <div class="film__container">
+    <div class="film__content" *ngIf="film$ | async as film">
+      <img [src]="film.properties.image" alt="">
+      <ul class="film-props">
+        <li class="film-props__item">
+          <h4>STAR WARS: {{ film.properties.title | uppercase }}</h4>
+        </li>
+        <li class="film-props__item">
+          <p>Opening Crawl: {{ film.properties.opening_crawl }}</p>
+        </li>
+        <li class="film-props__item">
+          <p>Episode: {{ film.properties.episode_id }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
