@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CharacterListComponent } from './pages/character-list/character-list.component';
+import { CharacterViewComponent } from '@app/characters/pages/character-view/character-view.component';
 
 const routes: Routes = [
   {
     path: '',
     component: CharacterListComponent
+  },
+  {
+    path: ':id/view',
+    component: CharacterViewComponent
   }
 ]
 
@@ -14,5 +20,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class CharactersRoutingModule {
-  static components = [CharacterListComponent]
+  static components = [CharacterListComponent, CharacterViewComponent]
 }

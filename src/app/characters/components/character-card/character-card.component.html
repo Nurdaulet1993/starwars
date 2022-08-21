@@ -1,10 +1,14 @@
-<div class="card shadow-sm border-0">
+<div class="card shadow-sm border-0 h-100 pb-3">
   <div class="pt-4 text-center">
     <img src="assets/img/person.svg" class="card-img-top" alt="character">
   </div>
-  <div class="card-body">
+  <div class="card-body position-relative pb-5">
     <div class="card-title text-center">
-      <h5>{{ character.properties.name }}</h5>
+      <h5 class="mb-4">{{ character.properties.name }}</h5>
+      <a class="btn btn-primary position-absolute bottom-0 start-50 translate-middle-x"
+         [routerLink]="[character.id, 'view']">
+        View more
+      </a>
     </div>
   </div>
 </div>

@@ -13,12 +13,11 @@ import { CharacterCardComponent } from './components/character-card/character-ca
 import { CharacterFilterComponent } from './components/character-filter/character-filter.component';
 
 
-
 @NgModule({
   declarations: [
     CharactersRoutingModule.components,
     CharacterCardComponent,
-    CharacterFilterComponent
+    CharacterFilterComponent,
   ],
   imports: [
     CommonModule,

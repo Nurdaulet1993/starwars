@@ -1,16 +1,25 @@
-<section class="characters py-5 bg-light">
+<section class="characters py-4 bg-light">
   <div class="container-lg">
-    <app-filter (search)="onSearch($event)"></app-filter>
-    <div class="row g-3">
-      <div class="col-3" *ngFor="let character of characters$ | async">
+    <app-filter (search)="onSearch($event)">
+      <div *ngIf="loading$ | async" class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </app-filter>
+    <div class="row g-3" *ngIf="characters$ | async as characters">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let character of characters">
         <app-character-card [character]="character"></app-character-card>
       </div>
       <div class="col-12" *ngIf="pagination$ | async as pagination">
-        <app-pagination [totalPages]="pagination.totalPages"
+        <app-pagination *ngIf="pagination.totalElements" [totalPages]="pagination.totalPages"
                         [page]="pagination.page"
                         (select)="onPage($event)"
         ></app-pagination>
       </div>
     </div>
+    <ng-template [ngIf]="(characters$ | async)?.length === 0">
+      <div class="alert alert-warning" role="alert">
+        Character not found!
+      </div>
+    </ng-template>
   </div>
 </section>

@@ -5,6 +5,7 @@ import { CharactersActions, CharactersApiActions } from './actions';
 import { catchError, EMPTY, map, mergeMap, withLatestFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectPagination, selectSearch, State } from '@app/characters/state/index';
+import { IError } from '@core/models/api-response.model';
 
 @Injectable()
 export class CharactersEffects {
@@ -20,7 +21,9 @@ export class CharactersEffects {
     ),
     mergeMap(([,pagination, search]) => this.peopleApiService.getPeople(pagination.page, search).pipe(
       map(value => CharactersApiActions.getCharactersSuccess({ payload: value, page: pagination.page })),
-      catchError(error => EMPTY)
+      catchError((error: IError) => {
+        return EMPTY;
+      })
     ))
   ))
 

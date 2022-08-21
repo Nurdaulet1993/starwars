@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FilmsApiService } from '@core/services/films-api.service';
-import {BehaviorSubject, switchMap, takeWhile} from 'rxjs';
+import { BehaviorSubject, switchMap, takeWhile } from 'rxjs';
 import { Film } from '@app/films/film.model';
 import { ActivatedRoute } from '@angular/router';
 

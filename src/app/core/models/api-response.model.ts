@@ -4,3 +4,7 @@ export interface IApiResponse<T> {
   previous: string | null;
   results: T;
 }
+
+export interface IError {
+  detail: string
+}
