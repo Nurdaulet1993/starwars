@@ -11,8 +11,11 @@ import { map, Observable } from 'rxjs';
 export class FilmsApiService {
   private readonly baseUrl = `${environment.api}/films`
 
-  films$: Observable<IFilm[]> = this.http.get<IApiResponse<IFilm[]>>(this.baseUrl)
-    .pipe(map(res => res.results));
+  films$: Observable<Film[]> = this.http.get<IApiResponse<IFilm[]>>(this.baseUrl)
+    .pipe(
+      map(res => res.results),
+      map((films: IFilm[]) => films.map(film => new Film(film)))
+    );
 
   constructor(
     private http: HttpClient

@@ -1,19 +1,16 @@
-<section class="films">
-  <div class="films__container">
-    <ul class="films-list" *ngIf="films$ | async as films">
-      <li class="films-list__item">
-        <app-film-filter>
-          <input type="text" [formControl]="filter" placeholder="search by title">
-        </app-film-filter>
-      </li>
-      <li class="films-list__item" *ngFor="let film of films | titleFilter: filterValue">
-        <app-film-card [film]="film"></app-film-card>
-      </li>
-    </ul>
+<section class="films py-5 bg-light">
+  <div class="container-lg">
+      <app-film-filter>
+          <input type="text"
+                 class="form-control w-25"
+                 placeholder="Search by name"
+                 [formControl]="filter"
+          >
+      </app-film-filter>
 
-    <ng-template>
-      <h2>Film not found!</h2>
-    </ng-template>
+    <ng-container *ngIf="films$ | async as films">
+      <app-film-card *ngFor="let film  of films | titleFilter: filterValue" [film]="film"></app-film-card>
+    </ng-container>
   </div>
 </section>
 

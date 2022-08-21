@@ -1,40 +1,5 @@
 @use "sass:math";
 
-:host {
-  display: block;
-  border-radius: math.div(5, 16) * 1rem;
-  overflow: hidden;
-}
-
 .card {
-  display: grid;
-  grid-template-columns: minmax(400px, 1fr) minmax(200px, 500px);
-  min-height: math.div(300, 16) * 1rem;
 
-  &__content {
-    padding: math.div(30, 16) * 1rem;
-    background-color: rgba(#fff, .1);
-  }
-
-  &__poster {
-    position: relative;
-
-    img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 100%;
-    }
-  }
-
-  &__title {
-    line-height: 1.7;
-    margin-bottom: math.div(20, 16) * 1rem;
-  }
-
-  &__text {
-    color: #aaaaaa;
-    line-height: 1.4;
-    font-size: math.div(14, 16) * 1rem;
-  }
 }

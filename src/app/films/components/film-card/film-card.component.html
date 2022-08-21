@@ -1,11 +1,16 @@
-<div class="card">
-  <div class="card__content">
-    <h4 class="card__title">STAR WARS: {{ film.properties.title | uppercase }}</h4>
-    <p class="card__text">{{ film.properties.opening_crawl }}</p>
-  </div>
-  <div class="card__poster">
-    <a [routerLink]="[film.id, 'details']">
-      <img class="poster" [src]="film.properties.image" alt="film poster">
-    </a>
+<div class="card mb-3 shadow-sm border-0">
+  <div class="row g-0">
+    <div class="col-6">
+      <div class="card-body">
+        <p><span class="badge bg-warning px-2">Episode {{ film.properties.episode_id }}</span></p>
+        <h5 class="card-title mb-3">STAR WARS: {{ film.properties.title }}</h5>
+        <p class="card-text text-muted">{{ film.properties.opening_crawl }}</p>
+        <p class="card-text"><small class="text-muted">Director: {{ film.properties.director }}</small></p>
+        <a [routerLink]="[film.id, 'details']" class="btn btn-dark">View more</a>
+      </div>
+    </div>
+    <div class="col-6 p-2">
+      <img [src]="film.properties.image" class="img-fluid rounded h-100" alt="poster">
+    </div>
   </div>
 </div>

@@ -1,59 +1,12 @@
-@use "sass:math";
-@import "layout/container";
-
 .header {
-  //background-color: #000000;
-  color: #ffffff;
+  &-card {
+    color: inherit;
 
-  &__top {
-    text-align: center;
-    padding: math.div(30, 16) * 1rem 0;
-    background-image: linear-gradient(to bottom, rgba(#000000, 0), rgba(#000000, 1)), url("/assets/img/img_1.png");
-  }
 
-  &__nav {
-    border-top: 1px solid #999999;
-    border-bottom: 1px solid #999999;
-  }
-
-  &__container {
-    @include container;
-  }
-
-  &__logo {
-    img {
-      display: inline-block;
-      width: math.div(290, 16) * 1rem;
-      height: auto;
-    }
-  }
-}
-
-.nav {
-  list-style: none;
-  text-align: center;
-
-  &__item {
-    display: inline-block;
-    padding: math.div(15, 16) * 1rem;
-    border-left: 1px solid #999999;
-    height: 100%;
-
-    &:last-child {
-      border-right: 1px solid #999999;
-    }
-  }
-
-  &__link {
-    color: #999999;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: math.div(2, 16) * 1rem;
-    transition: color 200ms ease-in;
-
-    &.active, &:hover {
-      color: #ffffff;
+    &__films {
+      //background-image: url("/assets/img/img.png");
+      //background-size: cover;
+      //background-repeat: no-repeat;
     }
   }
 }

@@ -1,32 +1,32 @@
-<header class="header">
-  <section class="header__top">
-    <a routerLink="/" class="header__logo">
-      <img src="assets/img/logo.png" alt="logo">
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-lg">
+    <a class="navbar-brand" routerLink="/">
+    Star Wars
     </a>
-  </section>
-  <nav class="header__nav">
-    <div class="header__container">
-      <ul class="nav">
-        <li class="nav__item">
-          <a routerLink="characters" class="nav__link">Characters</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="films">Films</a>
         </li>
-        <li class="nav__item">
-          <a routerLink="films" class="nav__link active">Films</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Characters</a>
         </li>
-        <li class="nav__item">
-          <a routerLink="/films" class="nav__link">Planets</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Species</a>
         </li>
-        <li class="nav__item">
-          <a routerLink="species" class="nav__link">Species</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Starships</a>
         </li>
-        <li class="nav__item">
-          <a routerLink="starships" class="nav__link">Starships</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Vehicles</a>
         </li>
-        <li class="nav__item">
-          <a routerLink="vehicles" class="nav__link">Vehicles</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Planets</a>
         </li>
       </ul>
     </div>
-  </nav>
-
-</header>
+  </div>
+</nav>

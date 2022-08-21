@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { selectFilms, State } from '@app/films/state';
 import { getFilms } from '@app/films/state/actions/films.actions';
 import { FormControl } from '@angular/forms';
-import {debounceTime, takeWhile} from 'rxjs';
+import { debounceTime, takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-film-list',

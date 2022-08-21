@@ -10,7 +10,7 @@ export interface IFilm {
     starships: string[];
     vehicles: string[];
     species: string[];
-    created: string[];
+    created: string;
     edited: string[];
     url: string;
 }

@@ -1,18 +1,23 @@
-<section class="film">
-  <div class="film__container">
-    <div class="film__content" *ngIf="film$ | async as film">
-      <img [src]="film.properties.image" alt="">
-      <ul class="film-props">
-        <li class="film-props__item">
-          <h4>STAR WARS: {{ film.properties.title | uppercase }}</h4>
-        </li>
-        <li class="film-props__item">
-          <p>Opening Crawl: {{ film.properties.opening_crawl }}</p>
-        </li>
-        <li class="film-props__item">
-          <p>Episode: {{ film.properties.episode_id }}</p>
-        </li>
-      </ul>
+<section class="film py-5 bg-light" *ngIf="film$ | async as film">
+  <div class="container-lg">
+    <div class="row">
+      <div class="col-4">
+        <div class="card border-0 shadow h-100">
+          <img [src]="film.properties.image" alt="poster" class="card-img h-100">
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">STAR WARS: {{ film.properties.title }} episode {{ film.properties.episode_id }}</h5>
+            <p class="card-text text-muted">{{ film.properties.opening_crawl }}</p>
+            <p class="card-text"><small class="text-muted">Director: {{ film.properties.director }}</small></p>
+            <p class="card-text"><small class="text-muted">Producer: {{ film.properties.producer }}</small></p>
+            <p class="card-text"><small class="text-muted">Date created: {{ film.properties.created | date: 'longDate' }}</small></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+

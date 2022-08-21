@@ -11,7 +11,7 @@ export class FilmsEffects {
 
   loadFilms$ = createEffect(() => this.actions$.pipe(
     ofType(FilmsActions.getFilms),
-    mergeMap(() => this.filmsApiService.getFilms()
+    mergeMap(() => this.filmsApiService.films$
         .pipe(
           map((films) => FilmsApiActions.getFilmsSuccess({ films })),
           catchError(() => EMPTY)
