@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from '@app/films/state/index';
 import { FilmsActions, FilmsApiActions  } from './actions';
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class FilmsEffects {
@@ -14,7 +15,10 @@ export class FilmsEffects {
     mergeMap(() => this.filmsApiService.films$
         .pipe(
           map((films) => FilmsApiActions.getFilmsSuccess({ films })),
-          catchError(() => EMPTY)
+          catchError((err: HttpErrorResponse) => {
+            console.log(err);
+            return EMPTY;
+          })
         )
     )
   ))

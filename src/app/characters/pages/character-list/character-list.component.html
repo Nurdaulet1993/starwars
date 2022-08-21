@@ -1,0 +1,15 @@
+<section class="characters py-5 bg-light">
+  <div class="container-lg">
+    <div class="row g-3">
+      <div class="col-3" *ngFor="let character of characters$ | async">
+        <app-character-card [character]="character"></app-character-card>
+      </div>
+      <div class="col-12" *ngIf="pagination$ | async as pagination">
+        <app-pagination [totalPages]="pagination.totalPages"
+                        [page]="pagination.page"
+                        (select)="onPage($event)"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</section>

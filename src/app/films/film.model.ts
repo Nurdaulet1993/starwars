@@ -1,3 +1,5 @@
+import { getEntityId } from '@shared/utils';
+
 export interface IFilm {
     title: string;
     episode_id: number;
@@ -28,8 +30,7 @@ export class Film {
   }
 
   private setProperties(value: IFilm) {
-    const arr = value.url.split('/');
-    this.id = +arr[arr.length - 2];
+    this.id = getEntityId(value.url);
 
     this.properties = {
       ...value,

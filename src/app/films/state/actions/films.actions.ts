@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 export enum FilmsActionsType {
-  GET_FILMS = '[FILMS API] Get all films',
-  GET_FILM = '[FILMS API] Get all films',
+  GET_FILMS = '[FILMS] Get all films',
+  GET_FILM = '[FILMS] Get film',
 }
 
 export const getFilms = createAction(
