@@ -1,5 +1,6 @@
 <section class="characters py-5 bg-light">
   <div class="container-lg">
+    <app-filter (search)="onSearch($event)"></app-filter>
     <div class="row g-3">
       <div class="col-3" *ngFor="let character of characters$ | async">
         <app-character-card [character]="character"></app-character-card>

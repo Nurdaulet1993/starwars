@@ -4,6 +4,7 @@ export enum CharactersActionsType {
   GET_CHARACTERS = '[CHARACTERS] Get all characters',
   GET_CHARACTER = '[FILMS] Get character',
   SET_PAGE = '[FILMS] Set page',
+  SET_SEARCH = '[FILMS] Set search'
 }
 
 export const getCharacters = createAction(
@@ -18,6 +19,11 @@ export const getCharacter = createAction(
 export const setPage = createAction(
   CharactersActionsType.SET_PAGE,
   props<{ page: number }>()
+)
+
+export const setSearch = createAction(
+  CharactersActionsType.SET_SEARCH,
+  props<{ search: string }>()
 )
 
 

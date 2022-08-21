@@ -24,6 +24,8 @@ export class PaginationComponent implements OnInit, OnDestroy {
   @Output() select = new EventEmitter<number>();
 
   @Input() set totalPages(value: number) {
+    this._pages = [];
+
     for (let i = 1; i <= value; i ++) {
       this._pages.push({
         label: i,

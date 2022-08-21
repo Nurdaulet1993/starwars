@@ -19,5 +19,6 @@ export const charactersReducer = createReducer(
     pagination: { ...new Pagination(payload), page },
     loading: false
   })),
-  on(CharactersActions.setPage, (state, { page }) => ({...state, pagination: { ...state.pagination, page } }))
+  on(CharactersActions.setPage, (state, { page }) => ({...state, pagination: { ...state.pagination, page } })),
+  on(CharactersActions.setSearch, (state, { search }) => ({ ...state, search }))
 )

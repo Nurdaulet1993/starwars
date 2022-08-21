@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectCharacters, selectPagination, State } from '@app/characters/state';
-import {getCharacters, setPage} from '@app/characters/state/actions/characters.actions';
+import {getCharacters, setPage, setSearch} from '@app/characters/state/actions/characters.actions';
 import { BehaviorSubject, takeWhile } from 'rxjs';
 import { Character } from '@app/characters/character.model';
 
@@ -36,5 +36,9 @@ export class CharacterListComponent implements OnInit, OnDestroy {
 
   onPage(page: number): void {
     this.store.dispatch(setPage({ page }));
+  }
+
+  onSearch(search: string) {
+    this.store.dispatch(setSearch({ search }));
   }
 }

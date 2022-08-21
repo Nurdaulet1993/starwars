@@ -11,7 +11,8 @@ export class CharactersEffects {
   getCharacters$ = createEffect(() => this.actions$.pipe(
     ofType(
       CharactersActions.getCharacters,
-      CharactersActions.setPage
+      CharactersActions.setPage,
+      CharactersActions.setSearch
     ),
     withLatestFrom(
       this.store.select(selectPagination),
