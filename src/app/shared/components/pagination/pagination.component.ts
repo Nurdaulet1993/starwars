@@ -29,6 +29,8 @@ export class PaginationComponent implements OnInit, OnDestroy {
   rangeEnd = 5;
   totalPages = 0;
 
+  lastPage$ = this.paginationService.lastPage$;
+
   @Input('length') set total(totalElements: number) {
     this.paginationService.setTotalElements(totalElements);
   }

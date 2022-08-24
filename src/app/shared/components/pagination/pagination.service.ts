@@ -52,6 +52,15 @@ export class PaginationService {
       })
     )
 
+  firstPage$ = this.pages$
+    .pipe(
+      map(pages => pages[0])
+    )
+
+  lastPage$ = this.pages$
+    .pipe(
+      map(pages => pages[pages.length - 1])
+    )
 
   setTotalElements(totalElements: number): void {
     this.totalElementsSub.next(totalElements);

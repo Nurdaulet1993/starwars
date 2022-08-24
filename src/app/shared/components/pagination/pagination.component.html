@@ -3,8 +3,17 @@
     <li class="page-item">
       <a class="page-link" (click)="onSelect(currentPage - 1)">Previous</a>
     </li>
+<!--    <li class="page-item disabled spacer">-->
+<!--      <span class="page-link">...</span>-->
+<!--    </li>-->
     <li class="page-item" *ngFor="let page of pages">
       <a class="page-link" (click)="onSelect(page.label)" [class.active]="page.active">{{ page.label }}</a>
+    </li>
+    <li class="page-item disabled spacer">
+      <span class="page-link">...</span>
+    </li>
+    <li class="page-item" *ngIf="lastPage$ | async as lastPage">
+      <a class="page-link">{{ lastPage.label }}</a>
     </li>
     <li class="page-item">
       <a class="page-link" (click)="onSelect(currentPage + 1)">Next</a>
