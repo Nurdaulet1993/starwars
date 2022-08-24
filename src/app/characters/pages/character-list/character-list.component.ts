@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectCharacters, selectLoading, selectPagination, State } from '@app/characters/state';
 import { getCharacters, setPage, setSearch } from '@app/characters/state/actions/characters.actions';
@@ -8,7 +8,8 @@ import { Character } from '@app/characters/character.model';
 @Component({
   selector: 'app-character-list',
   templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.scss']
+  styleUrls: ['./character-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterListComponent implements OnInit, OnDestroy {
   componentActive = true;

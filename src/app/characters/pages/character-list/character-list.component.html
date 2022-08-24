@@ -10,10 +10,9 @@
         <app-character-card [character]="character"></app-character-card>
       </div>
       <div class="col-12" *ngIf="pagination$ | async as pagination">
-        <app-pagination *ngIf="pagination.totalElements" [totalPages]="pagination.totalPages"
-                        [page]="pagination.page"
-                        (select)="onPage($event)"
-        ></app-pagination>
+        <app-pagination [pageSize]="5" [length]="15"></app-pagination>
+        <app-pagination [pageSize]="5" [length]="50"></app-pagination>
+        <app-pagination [pageSize]="5" [length]="50"></app-pagination>
       </div>
     </div>
     <ng-template [ngIf]="(characters$ | async)?.length === 0">

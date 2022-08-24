@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { PaginationModule } from '@shared/components/pagination/pagination.module';
 
 @NgModule({
   declarations: [
-    PaginationComponent,
     FilterComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaginationModule
   ],
   exports: [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    PaginationModule,
     // Components:
-    PaginationComponent,
     FilterComponent
   ]
 })
