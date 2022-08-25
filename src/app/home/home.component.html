@@ -2,12 +2,20 @@
   <div class="container-lg">
     <div class="row g-3">
       <div class="col-4">
-        <div class="card shadow-sm text-center">
+        <div class="card shadow-sm text-center" *hideAfter="3000 as time; then placeholder; let counter = counter">
           <img src="../../assets/img/films.png" class="card-img-top" alt="...">
           <div class="card-body bg-light">
-            <h4 class="card-title">Films</h4>
+            <h4 class="card-title">Films {{ counter }}</h4>
           </div>
         </div>
+        <ng-template #placeholder let-default let-hideAfter = hideAfter let-counter = counter >
+          <div class="card shadow-sm text-center">
+            <div class="card-body bg-light">
+              <h4 class="card-title">Placeholder {{ counter }} {{ hideAfter }} seconds {{ default }}</h4>
+            </div>
+          </div>
+        </ng-template>
+
       </div>
       <div class="col-4">
         <div class="card h-100 shadow-sm text-center">

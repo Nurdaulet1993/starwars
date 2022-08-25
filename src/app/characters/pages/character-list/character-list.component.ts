@@ -41,7 +41,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
     this.store.dispatch(setPage({ page }));
   }
 
-  onSearch(search: string) {
+  onSearch(search: string): void {
     this.store.dispatch(setSearch({ search }));
   }
 

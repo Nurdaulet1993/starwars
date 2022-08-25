@@ -4,11 +4,13 @@ import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
+import { HideAfterDirective } from './directives/hide-after.directive';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HideAfterDirective
   ],
   imports: [
     CommonModule,
