@@ -1,2 +1,15 @@
+$primary: #066AC9;
+$light: #fbf5e5;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+$custom-theme-colors: (
+  "my-light": #f2ebfa
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+
 @import "~bootstrap";
 @import "~bootstrap-icons";
