@@ -1,92 +1,95 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, Observable, of, withLatestFrom} from 'rxjs';
-import { IPage, IPaginationState } from '@shared/components/pagination/pagination.component';
+import {BehaviorSubject, combineLatest, filter, map, Observable} from 'rxjs';
+
+export interface IPage {
+  label: number;
+  active: boolean;
+  isFirst: boolean;
+  isLast: boolean;
+}
 
 @Injectable()
 export class PaginationService {
-  private readonly initialState: IPaginationState = {
-    totalElements: 0,
-    totalPages: 0,
-    pageSize: 5,
-    currentPage: 1
-  }
 
-  rangeStart = 0;
-  rangeEnd = 5;
+  private totalElementsSub = new BehaviorSubject<number>(0);
+  totalElementsAction$ = this.totalElementsSub.asObservable();
 
-  private rangeSub = new BehaviorSubject<[number, number]>([0, 5]);
-  rangeAction$ = this.rangeSub.pipe(
-    map(([rangeStart, rangeEnd]) => ({ rangeStart, rangeEnd }))
-  );
+  private pageSizeSub = new BehaviorSubject<number>(10)
+  pageSizeAction$ = this.pageSizeSub.asObservable();
 
-  private totalElementsSub = new BehaviorSubject<number>(this.initialState.totalElements);
-  totalElements$ = this.totalElementsSub.asObservable();
-
-  private pageSizeSub = new BehaviorSubject<number>(this.initialState.pageSize);
-  pageSize$ = this.pageSizeSub.asObservable();
-
-  private currentPageSub = new BehaviorSubject<number>(this.initialState.currentPage);
-  currentPage$ = this.currentPageSub.asObservable();
+  private currentPageSub = new BehaviorSubject<number>(1);
+  currentPageAction$ = this.currentPageSub.asObservable();
 
 
-  state$: Observable<IPaginationState> = combineLatest(this.totalElements$, this.pageSize$, this.currentPage$)
+  pages$ = combineLatest(this.totalElementsAction$, this.pageSizeAction$, this.currentPageAction$)
     .pipe(
-      map(([totalElements, pageSize, currentPage]) => {
-        return { totalElements, pageSize, currentPage, totalPages: Math.ceil(totalElements / pageSize) }
-      })
+      map(([elements, size, currentPage]) => ({ value: Math.ceil(elements / size), currentPage })),
+      map(this.setPages)
     )
 
-  pages$ = this.state$
+  lastPage$: Observable<IPage> = this.pages$
     .pipe(
-      map(({ totalPages, currentPage}) => this.setPages(totalPages, currentPage)),
+      map(value => ({
+        label: value.length,
+        active: false,
+        isFirst: false,
+        isLast: true
+      }))
     )
 
-  rangedPages$ = combineLatest(this.pages$, this.rangeAction$)
+  firstPage$ = this.pages$.pipe(
+    map(pages => pages.find(item => item.label === 1)),
+    map(value => {
+      if (value === undefined) return null;
+      return value;
+    })
+  )
+
+  pagesRange$ = combineLatest(this.pages$, this.currentPageAction$)
     .pipe(
-      map(([pages, { rangeStart, rangeEnd } ]) => {
-        if (rangeEnd >= pages[pages.length - 1].label) {
-          return pages.slice(rangeStart - rangeEnd);
+      map(([pages, currentPage]) => {
+        if (pages.length === 0) return;
+
+        if (currentPage === pages[pages.length - 1].label) {
+          return pages.slice(pages.length - 3);
         }
 
-        return pages.slice(rangeStart, rangeEnd);
+        if (currentPage > 4 && currentPage !== pages[pages.length - 1].label) {
+          return pages.slice(currentPage - 2, currentPage + 1);
+        }
+
+        return pages.slice(0, 5);
       })
     )
 
-  firstPage$ = this.pages$
-    .pipe(
-      map(pages => pages[0])
-    )
+  constructor() {}
 
-  lastPage$ = this.pages$
-    .pipe(
-      map(pages => pages[pages.length - 1])
-    )
-
-  setTotalElements(totalElements: number): void {
-    this.totalElementsSub.next(totalElements);
+  setTotalElements(value: number): void {
+    this.totalElementsSub.next(value)
   }
 
-  setPageSize(pageSize: number): void {
-    this.pageSizeSub.next(pageSize);
+  setPageSize(value: number): void {
+    this.pageSizeSub.next(value)
   }
 
-  setCurrentPage(page: number): void {
-    this.currentPageSub.next(page);
+  setCurrentPage(value: number) {
+    this.currentPageSub.next(value);
   }
 
-  setPagesRange(rangeStart: number, rangeEnd: number): void {
-    this.rangeSub.next([rangeStart, rangeEnd]);
-  }
+  private setPages({ value, currentPage }: { value: number, currentPage: number}): IPage[] {
+    let pages: IPage[] = [];
 
-
-
-  private setPages(totalPages: number, currentPage: number): IPage[] {
-    const pages: IPage[] = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push({ label: i, active: i === currentPage })
+    for (let i = 1; i <= value; i++) {
+      pages.push({
+        label: i,
+        active: i === currentPage,
+        isFirst: i === 1,
+        isLast: i === value
+      })
     }
 
     return pages;
   }
+
+
 }
