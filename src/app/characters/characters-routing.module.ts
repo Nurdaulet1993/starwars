@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CharacterListComponent } from './pages/character-list/character-list.component';
 import { CharacterViewComponent } from '@app/characters/pages/character-view/character-view.component';
+import {CharacterResolver} from '@app/characters/services/character.resolver';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: ':id/view',
-    component: CharacterViewComponent
+    component: CharacterViewComponent,
+    resolve: { character: CharacterResolver }
   }
 ]
 

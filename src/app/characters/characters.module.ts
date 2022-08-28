@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
-import { CharactersService } from '@app/characters/characters.service';
+import { CharactersService } from '@app/characters/services/characters.service';
 
 import { StoreModule } from '@ngrx/store';
 import { charactersReducer } from '@app/characters/state/characters.reducer';

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { PeopleApiService } from '@core/services/people-api.service';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, switchMap, takeWhile } from 'rxjs';
+import { ActivatedRoute, Data } from '@angular/router';
+import { BehaviorSubject, map } from 'rxjs';
 import { Character } from '@app/characters/character.model';
 
 @Component({
@@ -20,12 +20,12 @@ export class CharacterViewComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.route.params
+    this.route.data
       .pipe(
-        takeWhile(() => this.componentActive),
-        switchMap(params => this.peopleApiService.getCharacter(params['id']))
+        map((data: Data) => data['character'])
       )
       .subscribe(this.character$)
+
   }
 
   ngOnDestroy(): void {

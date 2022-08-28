@@ -1,3 +1,21 @@
+@use "sass:math";
+@import "variables";
+
 .page-link {
   cursor: pointer;
+  transition: all 150ms ease-in-out;
+  border: 1px solid #ECEBF1;
+  font-size: math.div(14, 16) * 1rem;
+  line-height: 1.7;
+  padding: math.div(10, 16) * 1rem math.div(15, 16) * 1rem;
+
+  &.active {
+    color: #ffffff !important;
+  }
+
+  &:hover {
+    background-color: $primary;
+    border-color: $primary;
+    color: #ffffff !important;
+  }
 }
