@@ -18,3 +18,7 @@ export const getCharacterSuccess = createAction(
   CharactersApiActionsType.GET_CHARACTER_SUCCESS,
   props<{ character: Character }>()
 )
+
+export const getCharactersFail = createAction(
+  CharactersApiActionsType.GET_CHARACTERS_FAIL
+)

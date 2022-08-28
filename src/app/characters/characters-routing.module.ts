@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CharacterResolver } from '@app/characters/services/character.resolver';
 
 import { CharacterListComponent } from './pages/character-list/character-list.component';
 import { CharacterViewComponent } from '@app/characters/pages/character-view/character-view.component';
-import {CharacterResolver} from '@app/characters/services/character.resolver';
+import {CharactersResolver} from '@app/characters/services/characters.resolver';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: CharacterListComponent
+    component: CharacterListComponent,
+    resolve: { characters: CharactersResolver }
   },
   {
     path: ':id/view',

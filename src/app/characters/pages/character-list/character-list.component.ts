@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Store } from '@ngrx/store';
 import { selectCharacters, selectLoading, selectPagination, State } from '@app/characters/state';
 import { getCharacters, setPage, setSearch } from '@app/characters/state/actions/characters.actions';
-import { BehaviorSubject, takeWhile } from 'rxjs';
+import {BehaviorSubject, map, takeWhile} from 'rxjs';
 import { Character } from '@app/characters/character.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-character-list',
@@ -18,12 +19,13 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   loading$ = this.store.select(selectLoading);
 
   constructor(
-    private store: Store<State>
+    private store: Store<State>,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.clearFilter();
-    this.store.dispatch(getCharacters());
+    // this.store.dispatch(getCharacters());
     this.getCharacters();
   }
 
