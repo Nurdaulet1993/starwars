@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from './components/filter/filter.component';
 import { PaginationModule } from '@shared/components/pagination/pagination.module';
+import { HighlightDirective } from '@shared/directives/highlight.directive';
 
 @NgModule({
   declarations: [
-    FilterComponent
+    FilterComponent,
+    HighlightDirective
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,9 @@ import { PaginationModule } from '@shared/components/pagination/pagination.modul
     ReactiveFormsModule,
     PaginationModule,
     // Components:
-    FilterComponent
+    FilterComponent,
+    // Directives
+    HighlightDirective
   ]
 })
 export class SharedModule { }

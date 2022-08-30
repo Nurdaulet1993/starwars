@@ -1,5 +1,5 @@
 <nav aria-label="Page navigation" *ngIf="pages$ | async as pages">
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     <li class="page-item" pagePrev>
       <a class="page-link me-1 rounded text-muted px-3 d-flex align-items-center h-100">
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -8,7 +8,7 @@
       </a>
     </li>
 
-    <ng-container *ngIf="pages.length === 5; else longPagination">
+    <ng-container *ngIf="pages.length <= 5; else longPagination">
       <li class="page-item" *ngFor="let page of pages">
         <a class="page-link mx-1 rounded" [page]="page">{{ page.label }}</a>
       </li>

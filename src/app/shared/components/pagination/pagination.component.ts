@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { PaginationService } from '@shared/components/pagination/pagination.service';
-import { takeWhile } from 'rxjs';
+import {skip, takeWhile} from 'rxjs';
 
 @Component({
   selector: 'app-pagination',
@@ -34,7 +34,10 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paginationService.currentPageAction$
-      .pipe(takeWhile(() => this.componentActive))
+      .pipe(
+        skip(1),
+        takeWhile(() => this.componentActive)
+      )
       .subscribe(value => this.select.emit(value))
   }
 

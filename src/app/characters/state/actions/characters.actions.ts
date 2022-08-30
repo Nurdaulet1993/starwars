@@ -1,10 +1,12 @@
 import { createAction, props } from '@ngrx/store';
+import {CharactersActions} from '@app/characters/state/actions/index';
 
 export enum CharactersActionsType {
   GET_CHARACTERS = '[CHARACTERS] Get all characters',
-  GET_CHARACTER = '[FILMS] Get character',
-  SET_PAGE = '[FILMS] Set page',
-  SET_SEARCH = '[FILMS] Set search'
+  GET_CHARACTER = '[CHARACTERS] Get character',
+  SET_PAGE = '[CHARACTERS] Set page',
+  SET_SEARCH = '[CHARACTERS] Set search',
+  SET_DEFAULT = '[CHARACTERS] Set default parameters'
 }
 
 export const getCharacters = createAction(
@@ -24,6 +26,10 @@ export const setPage = createAction(
 export const setSearch = createAction(
   CharactersActionsType.SET_SEARCH,
   props<{ search: string }>()
+)
+
+export const setDefault = createAction(
+  CharactersActionsType.SET_DEFAULT
 )
 
 

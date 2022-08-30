@@ -4,26 +4,26 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of, race, take, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectCharacters, State} from '@app/characters/state';
+import { State } from '@app/characters/state';
 import { getCharacters } from '@app/characters/state/actions/characters.actions';
 import { Actions, ofType } from '@ngrx/effects';
-import { Character } from '@app/characters/character.model';
+import { CharactersApiActions } from '@app/characters/state/actions';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CharactersResolver implements Resolve<Character[]> {
+export class CharactersResolver implements Resolve<boolean> {
   constructor(
     private store: Store<State>,
     private router: Router,
     private actions$: Actions
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Character[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     this.store.dispatch(getCharacters());
 
-    return this.store.select(selectCharacters);
+    return this.actions$.pipe(ofType(CharactersApiActions.getCharactersSuccess))
   }
 }

@@ -1,22 +1,19 @@
 import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appHighlight]'
+  selector: '[highlight]'
 })
 export class HighlightDirective {
-  @HostBinding('class.shadow-lg') shadow = false;
-  @HostBinding('class.scale') scale = false;
+  @HostBinding('class') classes = '';
 
   constructor(private el: ElementRef) { }
 
   @HostListener('mouseover') onHover() {
-    this.shadow = true;
-    this.scale = true;
+    this.classes = 'shadow';
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.shadow = false;
-    this.scale = false;
+    this.classes = '';
   }
 
 }

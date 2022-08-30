@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: CharacterListComponent,
-    resolve: { characters: CharactersResolver }
+    // resolve: { characters: CharactersResolver }
   },
   {
     path: ':id/view',

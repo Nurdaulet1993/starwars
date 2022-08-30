@@ -1,0 +1,5 @@
+@use "sass:math";
+
+.toolbar {
+  padding-bottom: math.div(20, 16) * 1rem;
+}

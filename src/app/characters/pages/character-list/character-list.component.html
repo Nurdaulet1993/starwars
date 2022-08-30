@@ -1,13 +1,10 @@
 <section class="characters py-4 bg-light">
+
   <div class="container-lg">
-<!--    <app-filter (search)="onSearch($event)">-->
-<!--      <div *ngIf="loading$ | async" class="spinner-border text-primary" role="status">-->
-<!--        <span class="visually-hidden">Loading...</span>-->
-<!--      </div>-->
-<!--    </app-filter>-->
-    <div class="row g-3" *ngIf="characters$ | async as characters">
-      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let character of characters">
-        <app-character-card [character]="character"></app-character-card>
+    <app-character-toolbar></app-character-toolbar>
+    <div class="row g-4" *ngIf="characters$ | async as characters">
+      <div appCharacterLayout *ngFor="let character of characters">
+        <app-character-card [character]="character" [class]="layoutType$ | async"></app-character-card>
       </div>
       <div class="col-12" *ngIf="pagination$ | async as pagination">
         <app-pagination [pageSize]="pagination.size"
