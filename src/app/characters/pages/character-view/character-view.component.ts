@@ -12,7 +12,7 @@ import { Character } from '@app/characters/character.model';
 })
 export class CharacterViewComponent implements OnInit, OnDestroy {
   componentActive = true;
-  character$ = new BehaviorSubject<Character>({ properties: { name: '' } } as Character);
+  character$ = new BehaviorSubject<Character>({ } as Character);
 
   constructor(
     private peopleApiService: PeopleApiService,

@@ -6,7 +6,7 @@ import { BehaviorSubject, takeWhile } from 'rxjs';
 import { Character } from '@app/characters/character.model';
 import { ActivatedRoute } from '@angular/router';
 import { CharactersFilterService } from '@app/characters/services/characters-filter.service';
-import {CharactersService} from '@app/characters/services/characters.service';
+import { CharactersService } from '@app/characters/services/characters.service';
 
 @Component({
   selector: 'app-character-list',

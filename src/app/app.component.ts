@@ -15,17 +15,17 @@ export class AppComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    console.log(this.users.find(item => item.age === 15));
-    console.log(this.users.filter(item => item.age > 15));
-    console.log(['B', 'D', 'A', 'C'].sort());
-    console.log([8, 22, 1].sort(this.compareNum));
-    console.log(this.users.sort(this.compareUsers));
+    // console.log(this.users.find(item => item.age === 15));
+    // console.log(this.users.filter(item => item.age > 15));
+    // console.log(['B', 'D', 'A', 'C'].sort());
+    // console.log([8, 22, 1].sort(this.compareNum));
+    // console.log(this.users.sort(this.compareUsers));
 
-    for (let item of this.users) {
-      console.log(item.name)
-    }
-
-    console.log(this.users.reduce((acc, item, index, arr) => acc + item.age, 0));
+    // for (let item of this.users) {
+    //   console.log(item.name)
+    // }
+    //
+    // console.log(this.users.reduce((acc, item, index, arr) => acc + item.age, 0));
   }
 
   compareNum(a: number, b: number): number {

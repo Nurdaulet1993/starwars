@@ -4,12 +4,12 @@
 
 <div class="card-body">
   <div class="card-title text-center">
-    <h5 class="mb-1">{{ character.properties.name }}</h5>
+    <h5 class="mb-1">{{ character.get('name') }}</h5>
   </div>
 </div>
 
 <ul class="list-group list-group-flush text-center border-0">
-  <li class="list-group-item">Gender: {{ character.properties.gender | titlecase }}</li>
-  <li class="list-group-item">Height: {{ character.properties.height }} cm</li>
-  <li class="list-group-item">Mass: {{ character.properties.mass }} kg</li>
+  <li class="list-group-item">Gender: {{ character.get('gender') }}</li>
+  <li class="list-group-item">Height: {{ character.get('height') }} cm</li>
+  <li class="list-group-item">Mass: {{ character.get('mass') }} kg</li>
 </ul>

@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@env';
 import { IApiResponse } from '@core/models/api-response.model';
 import { Character, ICharacter } from '@app/characters/character.model';
-import { map, Observable } from 'rxjs';
+import {map, Observable, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,18 +24,20 @@ export class PeopleApiService {
     return this.http.get<IApiResponse<ICharacter[]>>(this.baseUrl, { params })
       .pipe(
         map(value => {
+          console.log(value);
           return {
             ...value,
-            results: value.results.map(item => new Character(item))
+            results: value.results.map(item => Character.buildCharacter(item))
           }
-        })
+        }),
+        tap(value => console.log(value))
       );
   }
 
   getCharacter(id: number): Observable<Character> {
     return this.http.get<ICharacter>(`${this.baseUrl}/${id}`)
       .pipe(
-        map(value => new Character(value))
+        map(value => Character.buildCharacter(value))
       )
   }
 }

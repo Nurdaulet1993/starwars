@@ -1,5 +1,21 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, combineLatest, filter, map, Observable} from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+
+interface DamageLogger {
+  (reason: string): void;
+}
+
+export type DLogger = (reason: string) => void;
+
+export interface Book {
+  name: string;
+  logger: DamageLogger;
+}
+
+const book: Book = {
+  name: 'Helen',
+  logger: (reason: string) => console.log(reason)
+}
 
 export interface IPage {
   label: number;
@@ -76,7 +92,7 @@ export class PaginationService {
     this.currentPageSub.next(value);
   }
 
-  private setPages({ value, currentPage }: { value: number, currentPage: number}): IPage[] {
+  private setPages({ value, currentPage }: { value: number, currentPage: number }): IPage[] {
     let pages: IPage[] = [];
 
     for (let i = 1; i <= value; i++) {

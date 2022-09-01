@@ -8,12 +8,12 @@
         <div class="col-10">
           <div class="card-body">
             <div class="card-title">
-              <h5>{{ character.properties.name }}</h5>
-              <p>Gender: {{ character.properties.gender }}</p>
-              <p>Height: {{ character.properties.height }} cm</p>
-              <p>Mass: {{ character.properties.mass }}</p>
-              <p>Hair Colo: {{ character.properties.hair_color }}</p>
-              <p>Skin: {{ character.properties.skin_color }}</p>
+              <h5>{{ character.get('name') }}</h5>
+              <p>Gender: {{ character.get('gender') }}</p>
+              <p>Height: {{ character.get('height') }} cm</p>
+              <p>Mass: {{ character.get('mass') }}</p>
+              <p>Hair Colo: {{ character.get('hair_color') }}</p>
+              <p>Skin: {{ character.get('skin_color') }}</p>
             </div>
           </div>
         </div>

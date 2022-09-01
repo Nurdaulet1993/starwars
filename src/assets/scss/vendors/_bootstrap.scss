@@ -8,6 +8,5 @@ $custom-theme-colors: (
 
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 
-
 @import "~bootstrap";
 @import "~bootstrap-icons";

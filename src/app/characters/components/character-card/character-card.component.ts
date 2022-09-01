@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostBinding, HostListener, Input, OnInit} from '@angular/core';
-import { Character } from '@app/characters/character.model';
+import {Character, ICharacter} from '@app/characters/character.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,8 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./character-card.component.scss']
 })
 export class CharacterCardComponent implements OnInit {
+  private _character!: Character;
+
   @HostBinding('class') classes = 'card h-100 pb-3';
-  @Input() character!: Character;
+
+  @Input() set character(value: Character) {
+    console.log(value);
+
+    this._character = value;
+  }
 
   constructor(
     private router: Router,
@@ -17,6 +24,10 @@ export class CharacterCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  get character(): Character {
+    return this._character;
+  }
 
   @HostListener('mouseover') onHover() {
     this.classes = 'card h-100 pb-3 shadow';
