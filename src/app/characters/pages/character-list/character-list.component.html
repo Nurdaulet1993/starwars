@@ -9,6 +9,7 @@
       <div class="col-12" *ngIf="pagination$ | async as pagination">
         <app-pagination [pageSize]="pagination.size"
                         [totalElements]="pagination.totalElements"
+                        [currentPage]="pagination.page"
                         (select)="onPage($event)"
         >
         </app-pagination>
@@ -21,3 +22,10 @@
     </ng-template>
   </div>
 </section>
+
+<div class="loader position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" *ngIf="loading$ | async">
+  <div class="spinner-grow text-warning" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+

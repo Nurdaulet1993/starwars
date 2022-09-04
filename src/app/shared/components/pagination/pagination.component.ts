@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { PaginationService } from '@shared/components/pagination/pagination.service';
-import {skip, takeWhile} from 'rxjs';
+import { skip, takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-pagination',
@@ -26,6 +26,10 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   @Input() set pageSize(pageSize: number) {
     this.paginationService.setPageSize(pageSize);
+  }
+
+  @Input() set currentPage(value: number) {
+    this.paginationService.setCurrentPage(value);
   }
 
   constructor(

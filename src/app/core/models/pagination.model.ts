@@ -11,7 +11,6 @@ export interface IPagination {
   size: number;
 }
 
-
 export class Pagination implements IPagination{
   static buildPagination() {
     return new Pagination({
