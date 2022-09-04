@@ -1,23 +1,78 @@
 <section class="character py-4 bg-light">
   <div class="container-lg">
-    <div class="card p-3 w-100" *ngIf="character$ | async as character">
-      <div class="row">
-        <div class="col-2 text-center">
-          <img src="assets/img/person.svg" width="100" alt="avatar">
-        </div>
-        <div class="col-10">
-          <div class="card-body">
-            <div class="card-title">
-              <h5>{{ character.get('name') }}</h5>
-              <p>Gender: {{ character.get('gender') }}</p>
-              <p>Height: {{ character.get('height') }} cm</p>
-              <p>Mass: {{ character.get('mass') }}</p>
-              <p>Hair Colo: {{ character.get('hair_color') }}</p>
-              <p>Skin: {{ character.get('skin_color') }}</p>
+    <div class="row g-3 align-items-stretch">
+      <div class="col-5">
+        <div class="card p-3 h-100 border-0" *ngIf="character$ | async as character">
+          <div class="row">
+            <div class="col-4 text-center">
+              <img src="assets/img/person.svg" width="100" alt="avatar">
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <div class="card-title mb-3">
+                  <h3>{{ character.get('name') }}</h3>
+                </div>
+                <p>Gender: {{ character.get('gender') }}</p>
+                <p>Height: {{ character.get('height') }} cm</p>
+                <p>Mass: {{ character.get('mass') }} kg</p>
+                <p>Hair Colo: {{ character.get('hair_color') }}</p>
+                <p>Skin: {{ character.get('skin_color') }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-7">
+        <div class="row g-3">
+          <div class="col-6" *ngIf="films$ | async as films">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">Films</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let film of films">{{ film.properties.title }}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6"  *ngIf="(starships$ | async)?.length !== 0">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">Starships</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let starship of starships$ | async">
+                  {{ starship.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6" *ngIf="(vehicles$ | async)?.length !== 0">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">Vehicles</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let vehicle of vehicles$ | async">
+                  {{ vehicle.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6" *ngIf="(species$ | async)?.length !== 0">
+            <div class="card border-0">
+              <div class="card-body">
+                <h5 class="card-title">Species</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let specie of species$ | async">
+                  {{ specie.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
