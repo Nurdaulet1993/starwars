@@ -4,9 +4,9 @@
        aria-label="Search"
        [formControl]="search"
 >
-<div class="card border-0 shadow" *ngIf="results$ | async as results">
-  <ul class="list-group" >
-    <ng-template ngFor [ngForOf]="results" let-item>
+<div class="card border-0 shadow rounded overflow-hidden" *ngIf="results$ | async as results">
+  <ul class="list-group">
+    <ng-template ngFor [ngForOf]="results | slice: 0 : 10" let-item>
       <app-search-item [item]="item"></app-search-item>
     </ng-template>
 
