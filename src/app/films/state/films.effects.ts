@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from '@app/films/state/index';
 import { FilmsActions, FilmsApiActions  } from './actions';
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
-import {HttpErrorResponse} from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class FilmsEffects {

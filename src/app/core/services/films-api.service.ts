@@ -15,7 +15,7 @@ export class FilmsApiService {
     .pipe(
       shareReplay(1),
       map(res => res.results),
-      map((films: IFilm[]) => films.map(film => new Film(film)))
+      map((films: IFilm[]) => films.map(film => Film.buildFilm(film)))
     );
 
   constructor(
@@ -28,14 +28,14 @@ export class FilmsApiService {
     })
       .pipe(
         map(res => res.results),
-        map((films: IFilm[]) => films.map(film => new Film(film)))
+        map((films: IFilm[]) => films.map(film => Film.buildFilm(film)))
       );
   }
 
   getFilm(id: number): Observable<Film> {
     return this.http.get<IFilm>(`${this.baseUrl}/${id}`)
       .pipe(
-        map((value: IFilm) => new Film(value))
+        map((value: IFilm) => Film.buildFilm(value))
       )
   }
 }

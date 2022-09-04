@@ -9,7 +9,7 @@ export class TitleFilterPipe implements PipeTransform {
   transform(value: Film[], title: string): Film[] {
     if (!title) return value;
 
-    return value.filter(item => item.properties.title.toLowerCase().includes(title.toLowerCase()));
+    return value.filter(item => item.get('title').toLowerCase().includes(title.toLowerCase()));
   }
 
 }

@@ -30,7 +30,12 @@
                 <h5 class="card-title">Films</h5>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item" *ngFor="let film of films">{{ film.properties.title }}</li>
+                <a *ngFor="let film of films"
+                   class="list-group-item list-group-item-action"
+                   [routerLink]="['/films', film.id, 'details']"
+                >
+                   <span class="badge bg-warning me-2">Episode {{ film.get('episode_id')}}</span> {{ film.get('title') }}
+                </a>
               </ul>
             </div>
           </div>

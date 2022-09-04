@@ -17,7 +17,7 @@ export class Properties<T> implements IProperties<T>{
     return this.data;
   }
 
-  set = (value: T, cb?: (value: T) => T): void  => {
+  set = <K extends T>(value: T, cb?: (value: T) => K): void  => {
     this.data = cb ? cb(value) : value;
   }
 }

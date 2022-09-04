@@ -1,11 +1,20 @@
-import {Component, ElementRef, HostBinding, HostListener, Input, OnInit} from '@angular/core';
-import {Character, ICharacter} from '@app/characters/character.model';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit
+} from '@angular/core';
+import { Character} from '@app/characters/character.model';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-character-card[character]',
   templateUrl: './character-card.component.html',
-  styleUrls: ['./character-card.component.scss']
+  styleUrls: ['./character-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CharacterCardComponent implements OnInit {
   private _character!: Character;
@@ -13,8 +22,6 @@ export class CharacterCardComponent implements OnInit {
   @HostBinding('class') classes = 'card h-100 pb-3';
 
   @Input() set character(value: Character) {
-    console.log(value);
-
     this._character = value;
   }
 

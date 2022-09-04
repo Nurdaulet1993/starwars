@@ -1,4 +1,6 @@
 import { getEntityId } from '@shared/utils';
+import { Model } from '@core/models/Model';
+import { IProperties, Properties } from '@core/models/properties.model';
 
 export interface IFilm {
     title: string;
@@ -15,24 +17,29 @@ export interface IFilm {
     created: string;
     edited: string[];
     url: string;
+    image?: string;
 }
 
-export interface IFilmProps extends IFilm{
+export interface IFilmProps extends IFilm {
   image: string;
 }
 
-export class Film {
-  id!: number;
-  properties!: IFilmProps;
-
-  constructor(data: IFilm) {
-    this.setProperties(data);
+export class Film extends Model<IFilm>{
+  static buildFilm(data: IFilm) {
+    return new Film(new Properties<IFilm>(data));
   }
 
-  private setProperties(value: IFilm) {
-    this.id = getEntityId(value.url);
+  constructor(data: IProperties<IFilm>) {
+    super(data);
+    this.set(data.getAll(), this.setProperties)
+  }
 
-    this.properties = {
+  get id(): number {
+    return +getEntityId(this.get('url'));
+  }
+
+  setProperties = (value: IFilm): IFilm  => {
+    return  {
       ...value,
       episode_id: +value.episode_id,
       image: `assets/img/films/${this.id}.png`

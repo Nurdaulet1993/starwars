@@ -2,15 +2,15 @@
   <div class="row g-0">
     <div class="col-6">
       <div class="card-body">
-        <p><span class="badge bg-warning px-2">Episode {{ film.properties.episode_id }}</span></p>
-        <h5 class="card-title mb-3">STAR WARS: {{ film.properties.title }}</h5>
-        <p class="card-text text-muted">{{ film.properties.opening_crawl }}</p>
-        <p class="card-text"><small class="text-muted">Director: {{ film.properties.director }}</small></p>
+        <p><span class="badge bg-warning px-2">Episode {{ film.get('episode_id') }}</span></p>
+        <h5 class="card-title mb-3">STAR WARS: {{ film.get('title') }}</h5>
+        <p class="card-text text-muted">{{ film.get('opening_crawl') }}</p>
+        <p class="card-text"><small class="text-muted">Director: {{ film.get('director')}}</small></p>
         <a [routerLink]="[film.id, 'details']" class="btn btn-dark">View more</a>
       </div>
     </div>
     <div class="col-6 p-2">
-      <img [src]="film.properties.image" class="img-fluid rounded h-100 border-start border-5 border-warning" alt="poster">
+      <img loading="lazy" [src]="film.get('image')" class="img-fluid rounded h-100 border-start border-5 border-warning" alt="poster">
     </div>
   </div>
 </div>
