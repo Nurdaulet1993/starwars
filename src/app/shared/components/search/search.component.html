@@ -1,0 +1,15 @@
+<input class="form-control me-2"
+       type="search"
+       placeholder="Search"
+       aria-label="Search"
+       [formControl]="search"
+>
+<div class="card border-0 shadow" *ngIf="results$ | async as results">
+  <ul class="list-group" >
+    <ng-template ngFor [ngForOf]="results" let-item>
+      <app-search-item [item]="item"></app-search-item>
+    </ng-template>
+
+  </ul>
+</div>
+

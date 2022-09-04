@@ -45,7 +45,7 @@ export class CharacterCardComponent implements OnInit {
   }
 
   @HostListener('click') onClick() {
-    this.router.navigate(['characters', this.character.id, 'view']);
+    this.router.navigate(['characters', this.character.id, 'details']);
   }
 
 }

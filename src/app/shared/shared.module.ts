@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from './components/filter/filter.component';
 import { PaginationModule } from '@shared/components/pagination/pagination.module';
 import { HighlightDirective } from '@shared/directives/highlight.directive';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
     FilterComponent,
-    HighlightDirective
+    HighlightDirective,
+    ClickOutsideDirective
   ],
   imports: [
     CommonModule,

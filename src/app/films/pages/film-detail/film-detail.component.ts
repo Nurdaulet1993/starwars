@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FilmDetailComponent implements OnInit, OnDestroy {
   componentActive = true;
-  film$ = new BehaviorSubject<Film | null>({} as Film);
+  film$ = new BehaviorSubject<Film | null>(null);
 
   constructor(
     private filmsApiService: FilmsApiService,

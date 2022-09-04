@@ -24,13 +24,11 @@ export class PeopleApiService {
     return this.http.get<IApiResponse<ICharacter[]>>(this.baseUrl, { params })
       .pipe(
         map(value => {
-          console.log(value);
           return {
             ...value,
             results: value.results.map(item => Character.buildCharacter(item))
           }
         }),
-        tap(value => console.log(value))
       );
   }
 
@@ -39,5 +37,16 @@ export class PeopleApiService {
       .pipe(
         map(value => Character.buildCharacter(value))
       )
+  }
+
+  search(search: string): Observable<Character[]> {
+    return this.http.get<IApiResponse<ICharacter[]>>(this.baseUrl, {
+      params: { search }
+    })
+      .pipe(
+        map(value => {
+          return value.results.map(item => Character.buildCharacter(item))
+        }),
+      );
   }
 }

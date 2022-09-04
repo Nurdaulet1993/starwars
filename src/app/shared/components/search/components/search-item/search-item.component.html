@@ -1,0 +1,9 @@
+<a [routerLink]="['/', item.type, item.id, 'details']"
+   class="list-group-item list-group-item-action shadow-none border-bottom-0"
+>
+  <span class="badge me-2 rounded-circle p-2" [class]="iconBg">
+    <i class="bi" [class]="icon"></i>
+  </span>
+
+  {{ item.name }}
+</a>

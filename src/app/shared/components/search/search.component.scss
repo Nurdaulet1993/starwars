@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+input {
+  width: 300px;
+}
+
+.card {
+  position: absolute;
+  background-color: white;
+  top: calc(100% + 10px);
+  width: 100%;
+  z-index: 100;
+}
