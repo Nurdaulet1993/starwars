@@ -15,14 +15,10 @@ import {
   map,
   mergeMap,
   filter,
-  BehaviorSubject, takeWhile
+  BehaviorSubject, takeWhile, of, observeOn, asyncScheduler
 } from 'rxjs';
-
-export interface ISearchItem {
-  id: number,
-  name: string,
-  type: string;
-}
+import {ISearchItem, SearchItem} from './search-item.model';
+import {Collection} from '@core/models/Collection';
 
 @Component({
   selector: 'app-search',
@@ -34,7 +30,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   componentActive = true;
   search = new FormControl<string>('', { nonNullable: true });
 
-  private resultsAction = new BehaviorSubject<ISearchItem[] | null>(null);
+  private resultsAction = new BehaviorSubject<SearchItem[] | null>(null);
   results$ = this.resultsAction.asObservable();
 
   constructor(
@@ -62,8 +58,10 @@ export class SearchComponent implements OnInit, OnDestroy {
           ];
         }),
       )
-      .subscribe(value => {
-        this.resultsAction.next(value);
+      .subscribe((value: ISearchItem[]) => {
+        const collection = SearchItem.buildCollection();
+        collection.fetch(value);
+        this.resultsAction.next(collection.data({ sort: true }));
       })
 
     this.search.valueChanges
@@ -77,6 +75,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.componentActive = false;
+
+    requestAnimationFrame(() => console.log('first animation frame'));
+
+    of(12).pipe(observeOn(asyncScheduler))
   }
 
   @HostListener('document:click', ['$event'])

@@ -9,7 +9,9 @@
     <ng-template ngFor [ngForOf]="results | slice: 0 : 10" let-item>
       <app-search-item [item]="item"></app-search-item>
     </ng-template>
-
+    <a href="#" class="list-group-item list-group-item-action shadow-none text-primary">
+      See all result
+    </a>
   </ul>
 </div>
 

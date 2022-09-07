@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ISearchItem } from '@shared/components/search/search.component';
+import {ISearchItem, SearchItem} from '@shared/components/search/search-item.model';
 
 @Component({
   selector: 'app-search-item[item]',
@@ -7,14 +7,14 @@ import { ISearchItem } from '@shared/components/search/search.component';
   styleUrls: ['./search-item.component.scss']
 })
 export class SearchItemComponent implements OnInit {
-  @Input() item!: ISearchItem;
+  @Input() item!: SearchItem;
 
   constructor() { }
 
   ngOnInit(): void {}
 
   get icon(): string {
-    switch (this.item.type) {
+    switch (this.item.data.type) {
       case 'films':
         return 'bi-film'
       default: return 'bi-person-fill'
@@ -22,7 +22,7 @@ export class SearchItemComponent implements OnInit {
   }
 
   get iconBg(): string {
-    switch (this.item.type) {
+    switch (this.item.data.type) {
       case 'films':
         return 'bg-success'
       default: return 'bg-warning'

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {animationFrames, map, of} from 'rxjs';
 
 @Component({
   selector: 'app-root',

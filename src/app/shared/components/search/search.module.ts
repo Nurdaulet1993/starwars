@@ -16,7 +16,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     SearchComponent
