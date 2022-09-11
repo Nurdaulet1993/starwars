@@ -78,8 +78,6 @@ export class PaginationService {
       })
     )
 
-  constructor() {}
-
   setTotalElements(value: number): void {
     this.totalElementsSub.next(value)
   }

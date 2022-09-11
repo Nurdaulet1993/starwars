@@ -37,12 +37,15 @@ export class PaginationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.paginationService.currentPageAction$
-      .pipe(
-        skip(1),
-        takeWhile(() => this.componentActive)
-      )
-      .subscribe(value => this.select.emit(value))
+    // this.paginationService.currentPageAction$
+    //   .pipe(
+    //     skip(1),
+    //     takeWhile(() => this.componentActive)
+    //   )
+    //   .subscribe(value => {
+    //     console.log(value);
+    //     this.select.emit(value);
+    //   })
   }
 
   ngOnDestroy(): void {
@@ -51,5 +54,9 @@ export class PaginationComponent implements OnInit, OnDestroy {
 
   get totalElements() {
     return this._totalElements;
+  }
+
+  onSelect(page: number) {
+    this.select.emit(page);
   }
 }

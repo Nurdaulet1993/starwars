@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { IPage, PaginationService } from '@shared/components/pagination/pagination.service';
 import { takeWhile } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { takeWhile } from 'rxjs';
 })
 export class PageNextDirective implements OnInit, OnDestroy {
   @HostBinding('class.disabled') disabled = false;
+  @Output() select = new EventEmitter<number>();
   directiveActive = true;
   currentPage = 1;
   pages: IPage[] = [];
@@ -39,7 +40,7 @@ export class PageNextDirective implements OnInit, OnDestroy {
   @HostListener('click') onClick() {
     const page = this.currentPage + 1;
     if (page > this.pages.length) return;
-    this.paginationService.setCurrentPage(page);
+    this.select.emit(page);
   }
 
 

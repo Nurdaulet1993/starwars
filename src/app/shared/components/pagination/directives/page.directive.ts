@@ -1,10 +1,11 @@
-import { Directive, HostBinding, HostListener, Input } from '@angular/core';
+import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 import { IPage, PaginationService } from '@shared/components/pagination/pagination.service';
 
 @Directive({
   selector: '[page]'
 })
 export class PageDirective {
+  @Output() select = new EventEmitter<number>();
   private _page: IPage | null = null;
 
   @Input('page') set page(value: IPage | null) {
@@ -19,8 +20,8 @@ export class PageDirective {
   ) {}
 
   @HostListener('click') onClick() {
-    if (!this._page) return;
-    this.paginationService.setCurrentPage(this._page.label);
+    if (!this._page || this._page.active) return;
+    this.select.emit(this._page.label);
   }
 
 

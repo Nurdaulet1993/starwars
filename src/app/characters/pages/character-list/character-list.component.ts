@@ -56,7 +56,6 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   }
 
   onSearch = (search: string): void => {
-    console.log(search);
     this.store.dispatch(setSearch({ search }));
   }
 }

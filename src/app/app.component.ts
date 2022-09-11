@@ -27,6 +27,13 @@ export class AppComponent implements OnInit {
     // }
     //
     // console.log(this.users.reduce((acc, item, index, arr) => acc + item.age, 0));
+
+    console.log('London is the capitol capitol'.replace(/capitol/g, 'hello'));
+
+
+    console.log(/london/i.test('London is the capitol capito'));
+    console.log(/[a-z]/i.exec('London is the capitol capito'));
+    console.log(/[0-9]/gm.exec('London is the capitol capito 5454'));
   }
 
   compareNum(a: number, b: number): number {

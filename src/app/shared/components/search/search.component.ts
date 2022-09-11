@@ -17,8 +17,7 @@ import {
   filter,
   BehaviorSubject, takeWhile, of, observeOn, asyncScheduler
 } from 'rxjs';
-import {ISearchItem, SearchItem} from './search-item.model';
-import {Collection} from '@core/models/Collection';
+import { ISearchItem, SearchItem } from './search-item.model';
 
 @Component({
   selector: 'app-search',
